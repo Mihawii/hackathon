@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0d0b09">
+  <title>Little Days</title>
+  <link rel="icon" href="assets/star.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&display=swap">
+  <link rel="stylesheet" href="album.css">
+  <script type="module" src="album.js"></script>
+</head>
+<body>
+  <main id="stage" tabindex="-1" aria-label="Little Days, a storybook of remembered days">
+    <div id="book-host" aria-hidden="true"></div>
+    <p id="caption" aria-hidden="true"></p>
+    <p id="hint"></p>
+    <div class="keys sr">
+      <button id="open-book">Open the book</button>
+      <button id="prev">Previous memory</button>
+      <button id="next">Next memory</button>
+      <button id="enter">Step into the photograph</button>
+      <button id="leave">Fold the scene back into the page</button>
+      <button id="write">Write a new day</button>
+    </div>
+    <p id="no-webgl" hidden>This storybook needs WebGL. Try a current version of Chrome, Safari, Edge or Firefox.</p>
+  </main>
+
+  <dialog id="new-dialog" aria-labelledby="new-title">
+    <button class="x" aria-label="Close" data-close>×</button>
+    <p class="eyebrow">A new page</p>
+    <h2 id="new-title">Keep a day</h2>
+    <form id="entry-form">
+      <label>Date<input id="date" type="date" required></label>
+      <label>What do you want to remember?<textarea id="story" rows="4" maxlength="1800" placeholder="The last train had gone, so we walked…" required></textarea></label>
+      <label>Photographs<input id="photos" type="file" accept="image/*" multiple required></label>
+      <fieldset><legend>Song of the day</legend>
+        <div class="source-options"><label><input type="radio" name="source" value="file" checked> Audio file</label><label><input type="radio" name="source" value="link"> Song link</label></div>
+        <label id="audio-field"><span class="sr">Choose audio</span><input id="audio-file" type="file" accept="audio/*" required></label>
+        <div id="link-fields" hidden><label>Music link<input id="song-url" type="url" placeholder="https://"></label><label>How does it sound?<select id="song-energy"><option value="slow">Soft and slow</option><option value="steady">Steady and warm</option><option value="bright">Bright and lively</option></select></label></div>
+      </fieldset>
+      <p class="local-note">Your days are bound into this browser's copy of the book.</p>
+      <p class="form-status" id="form-status" role="status"></p>
+      <button class="ink-button" id="save">Bind this day into the book</button>
+    </form>
+  </dialog>
+  <div id="announcement" class="sr" role="status" aria-live="polite"></div>
+  <audio id="player" loop preload="none"></audio>
+</body>
+</html>

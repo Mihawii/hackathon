@@ -1,0 +1,5 @@
+node_modules/
+keepsake/dist/
+.vercel/
+publish/
+.DS_Store

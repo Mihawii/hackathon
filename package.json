@@ -1,0 +1,19 @@
+{
+  "name": "little-days",
+  "private": true,
+  "scripts": {
+    "dev": "vite keepsake --host 127.0.0.1 --port 8427 --strictPort",
+    "build": "vite build keepsake",
+    "deploy": "zsh scripts/deploy-vercel.sh",
+    "voice": "node scripts/generate-narration.mjs",
+    "embed-model": "node keepsake/tools/embed-book.mjs"
+  },
+  "dependencies": {
+    "gsap": "3.15.1",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "vite": "8.3.6"
+  },
+  "description": "A 3D storybook diary: each day becomes a page whose photograph unfolds into a pop-up paper theatre, read aloud by an ElevenLabs narrator."
+}
