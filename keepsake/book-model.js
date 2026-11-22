@@ -1110,7 +1110,8 @@ function setUpBook(renderer, model, host, callbacks, removeLossListener) {
         const sparkling = sparkles.update(dt, clock);
         if (width && height) {
             const depth = curve(cap(focus.amount,0,1));
-            bokeh.enabled = depth > .04 && !reduced.matches;
+            // Depth of field misfocused intermittently on some GPUs; scenes stay crisp without it.
+            bokeh.enabled = false;
             if (bokeh.enabled) {
                 bokeh.uniforms.focus.value = camera.position.distanceTo(focusPoint);
                 bokeh.uniforms.aperture.value = .0075*depth;
